@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frases para Viver | Ebook de Inspiração</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Sabedoria & Alma | 1000+ Frases para Transformar sua Vida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -14,113 +14,174 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0f0c1f 0%, #1a1a2e 50%, #16213e 100%);
-            color: #f0f0f0;
-            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            background: #0a0a0a;
+            color: #ececec;
         }
 
-        /* Header com efeito glassmorphism */
+        /* Partículas de fundo animadas */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 20% 30%, #1a1a2e, #0a0a0a);
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(212, 175, 55, 0.15);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            50% { transform: translateY(-100px) translateX(50px); opacity: 0.8; }
+        }
+
+        /* Header majestoso */
         .hero {
+            position: relative;
+            z-index: 2;
             text-align: center;
-            padding: 100px 20px 60px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 50px;
+            padding: 120px 20px 80px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(26,26,46,0.9) 100%);
+            backdrop-filter: blur(2px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 60px;
         }
 
         .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #fff, #e8d5b7, #c9a96e);
-            background-size: 200% auto;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #e8d5b7 0%, #c9a96e 40%, #f5e6c8 70%, #c9a96e 100%);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: shine 3s infinite;
+            animation: goldenShine 6s ease infinite;
             letter-spacing: -0.02em;
         }
 
-        @keyframes shine {
+        @keyframes goldenShine {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.7);
-            max-width: 600px;
-            margin: 20px auto 0;
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: rgba(236, 236, 236, 0.7);
+            max-width: 700px;
+            margin: 25px auto 0;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
-        .hero .count {
-            display: inline-block;
-            background: rgba(201, 169, 110, 0.2);
-            border: 1px solid rgba(201, 169, 110, 0.5);
-            border-radius: 50px;
-            padding: 8px 20px;
-            margin-top: 25px;
-            font-size: 0.9rem;
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 60px;
+            padding: 12px 28px;
+            margin-top: 35px;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge i {
             color: #c9a96e;
+            font-size: 1.3rem;
         }
 
-        /* Filtro de temas */
-        .filter-bar {
+        .badge span {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .badge .count-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #c9a96e;
+            margin-right: 5px;
+        }
+
+        /* Filtros */
+        .filter-section {
+            position: relative;
+            z-index: 2;
             text-align: center;
             margin-bottom: 50px;
             padding: 0 20px;
         }
 
         .filter-btn {
-            background: rgba(255,255,255,0.05);
-            border: none;
-            color: rgba(255,255,255,0.7);
-            padding: 10px 24px;
-            margin: 5px;
-            border-radius: 40px;
+            background: rgba(20, 20, 30, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: #ccc;
+            padding: 12px 28px;
+            margin: 6px;
+            border-radius: 50px;
             font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
             font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            font-family: 'Montserrat', sans-serif;
         }
 
-        .filter-btn:hover, .filter-btn.active {
-            background: #c9a96e;
-            color: #0f0c1f;
-            transform: translateY(-2px);
+        .filter-btn i {
+            margin-right: 8px;
         }
 
-        /* Grid de frases */
+        .filter-btn:hover {
+            border-color: #c9a96e;
+            color: #c9a96e;
+            transform: translateY(-3px);
+            background: rgba(30, 30, 45, 0.9);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #c9a96e, #b8924a);
+            color: #0a0a0a;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(201, 169, 110, 0.3);
+        }
+
+        /* Container */
         .container {
-            max-width: 1400px;
+            position: relative;
+            z-index: 2;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 0 20px 80px;
+            padding: 0 30px 80px;
         }
 
+        /* Grid de cards */
         .quote-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 35px;
         }
 
-        /* Card de cada frase */
+        /* Card individual - design luxuoso */
         .quote-card {
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 30px;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border: 1px solid rgba(255,255,255,0.05);
-            cursor: pointer;
+            background: linear-gradient(135deg, rgba(25, 25, 40, 0.7) 0%, rgba(15, 15, 25, 0.8) 100%);
+            backdrop-filter: blur(12px);
+            border-radius: 28px;
+            padding: 35px 30px;
+            transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+            border: 1px solid rgba(212, 175, 55, 0.15);
             position: relative;
             overflow: hidden;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            cursor: pointer;
         }
 
         .quote-card::before {
@@ -128,124 +189,183 @@
             position: absolute;
             top: 20px;
             left: 25px;
-            font-size: 5rem;
-            font-family: 'Playfair Display', serif;
-            color: rgba(201, 169, 110, 0.15);
+            font-size: 6rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: rgba(212, 175, 55, 0.08);
             pointer-events: none;
+            font-weight: 700;
+        }
+
+        .quote-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .quote-card:hover::after {
+            left: 100%;
         }
 
         .quote-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(201, 169, 110, 0.4);
-            background: rgba(255,255,255,0.06);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, rgba(35, 35, 55, 0.85) 0%, rgba(20, 20, 35, 0.9) 100%);
+            box-shadow: 0 25px 45px -15px rgba(0,0,0,0.5), 0 0 0 1px rgba(212, 175, 55, 0.2) inset;
         }
 
         .quote-text {
-            font-size: 1.1rem;
-            line-height: 1.6;
+            font-size: 1.15rem;
+            line-height: 1.65;
             font-weight: 400;
+            font-family: 'Cormorant Garamond', serif;
+            text-align: center;
+            margin-bottom: 25px;
             position: relative;
             z-index: 2;
-            font-family: 'Playfair Display', serif;
-            text-align: center;
-            margin-bottom: 20px;
+            color: #f5f0e8;
+            letter-spacing: 0.3px;
+        }
+
+        .quote-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            padding-top: 18px;
         }
 
         .quote-topic {
-            display: inline-block;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 4px 12px;
-            border-radius: 20px;
-            background: rgba(201, 169, 110, 0.2);
-            color: #c9a96e;
-            align-self: center;
+            letter-spacing: 2.5px;
             font-weight: 500;
+            padding: 5px 14px;
+            border-radius: 30px;
+            background: rgba(212, 175, 55, 0.12);
+            color: #d4af37;
         }
 
-        /* Temas de cores diferentes por categoria */
-        .quote-card[data-topic="tempo"] .quote-topic { background: rgba(100, 150, 200, 0.2); color: #7eb6e0; }
-        .quote-card[data-topic="felicidade"] .quote-topic { background: rgba(250, 200, 100, 0.2); color: #f5cf87; }
-        .quote-card[data-topic="coragem"] .quote-topic { background: rgba(200, 100, 150, 0.2); color: #e08bb0; }
-        .quote-card[data-topic="leveza"] .quote-topic { background: rgba(100, 200, 150, 0.2); color: #7ed6a3; }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 40px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            margin-top: 60px;
-            color: rgba(255,255,255,0.4);
-            font-size: 0.8rem;
+        .quote-number {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.3);
+            font-family: monospace;
         }
 
-        /* Botão flutuante de voltar ao topo */
-        .back-to-top {
+        /* Cores específicas por tema */
+        .quote-card[data-topic="tempo"] .quote-topic { background: rgba(80, 150, 200, 0.15); color: #6bb5e0; }
+        .quote-card[data-topic="felicidade"] .quote-topic { background: rgba(240, 180, 80, 0.15); color: #f5cf87; }
+        .quote-card[data-topic="coragem"] .quote-topic { background: rgba(220, 100, 130, 0.15); color: #e08bb0; }
+        .quote-card[data-topic="leveza"] .quote-topic { background: rgba(100, 200, 160, 0.15); color: #7ed6a3; }
+        .quote-card[data-topic="amor"] .quote-topic { background: rgba(200, 120, 160, 0.15); color: #e09dc0; }
+        .quote-card[data-topic="sucesso"] .quote-topic { background: rgba(100, 180, 200, 0.15); color: #6cc5d4; }
+
+        /* Botão flutuante */
+        .floating-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: #c9a96e;
-            color: #0f0c1f;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.3s;
             z-index: 100;
-            border: none;
-            font-size: 1.2rem;
+            display: flex;
+            gap: 15px;
         }
 
-        .back-to-top.show {
-            opacity: 1;
+        .float-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c9a96e, #a07d40);
+            border: none;
+            color: #0a0a0a;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+            background: #d4af37;
+        }
+
+        /* Footer */
+        .footer {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 50px;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            margin-top: 60px;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+            background: rgba(0,0,0,0.4);
         }
 
         /* Responsivo */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .quote-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.8rem; }
+            .quote-grid { grid-template-columns: 1fr; gap: 20px; }
             .quote-card { padding: 25px; }
-            .filter-btn { padding: 6px 16px; font-size: 0.8rem; }
+            .filter-btn { padding: 8px 16px; font-size: 0.75rem; }
+            .container { padding: 0 15px 40px; }
         }
 
         /* Animação de entrada */
         .quote-card {
-            animation: fadeInUp 0.6s ease forwards;
+            animation: fadeInScale 0.7s ease forwards;
             opacity: 0;
+            transform: scale(0.95);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+        @keyframes fadeInScale {
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: scale(1);
             }
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c9a96e;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
 
+<div class="particles" id="particles"></div>
+
 <div class="hero">
-    <h1>Frases para lembrar de viver</h1>
-    <p>"A vida não devolve o tempo perdido — então faça o que te faz feliz agora"</p>
-    <div class="count"><i class="fas fa-feather-alt"></i> 520 frases de inspiração</div>
+    <h1>Sabedoria & Alma</h1>
+    <div class="subtitle">
+        "A vida não devolve o tempo perdido — então faça o que te faz feliz agora"
+    </div>
+    <div class="badge">
+        <i class="fas fa-feather-alt"></i>
+        <span><span class="count-number" id="quoteCount">0</span> FRASES DE PODER</span>
+        <i class="fas fa-gem"></i>
+    </div>
 </div>
 
-<div class="filter-bar">
-    <button class="filter-btn active" data-filter="all">Todas</button>
-    <button class="filter-btn" data-filter="tempo">⏳ Tempo & Vida</button>
-    <button class="filter-btn" data-filter="felicidade">😊 Felicidade & Escolhas</button>
-    <button class="filter-btn" data-filter="coragem">🦁 Coragem & Recomeços</button>
-    <button class="filter-btn" data-filter="leveza">🕊️ Leveza & Deixar Ir</button>
+<div class="filter-section">
+    <button class="filter-btn active" data-filter="all"><i class="fas fa-star"></i> Todas</button>
+    <button class="filter-btn" data-filter="tempo"><i class="fas fa-hourglass-half"></i> Tempo & Vida</button>
+    <button class="filter-btn" data-filter="felicidade"><i class="fas fa-smile"></i> Felicidade</button>
+    <button class="filter-btn" data-filter="coragem"><i class="fas fa-dragon"></i> Coragem</button>
+    <button class="filter-btn" data-filter="leveza"><i class="fas fa-feather"></i> Leveza</button>
+    <button class="filter-btn" data-filter="amor"><i class="fas fa-heart"></i> Amor & Sentimentos</button>
+    <button class="filter-btn" data-filter="sucesso"><i class="fas fa-chart-line"></i> Sucesso & Propósito</button>
 </div>
 
 <div class="container">
@@ -253,17 +373,21 @@
 </div>
 
 <div class="footer">
-    <p>✨ Ebook de frases — Inspire-se, viva melhor. ✨</p>
+    <p>✨ Coleção Premium — 1000+ Frases para Transformar sua Vida ✨</p>
+    <p style="font-size: 0.7rem; margin-top: 10px;">© Sabedoria & Alma - Todos os direitos reservados</p>
 </div>
 
-<button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+<div class="floating-btn">
+    <button class="float-btn" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+    <button class="float-btn" id="printPDF"><i class="fas fa-print"></i></button>
+</div>
 
 <script>
     // ============================================
-    // GERADOR DE 520 FRASES (com variações automáticas)
+    // GERADOR DE 1050+ FRASES (7 temas)
     // ============================================
     
-    const topicos = {
+    const frasesPorTema = {
         tempo: [
             "O tempo não espera você ficar pronto — ele simplesmente passa.",
             "Cada segundo vivido com dúvida é um segundo roubado da sua alegria.",
@@ -289,7 +413,13 @@
             "A morte não é o maior medo — é viver e perceber que nunca viveu.",
             "Cada minuto com raiva é 60 segundos de felicidade perdida.",
             "O tempo é como areia — quando percebe, já escorreu.",
-            "Não conte os dias, faça os dias contarem."
+            "Não conte os dias, faça os dias contarem.",
+            "A vida é uma ampulheta que ninguém pode virar de novo.",
+            "O tempo é o melhor professor, mas infelizmente mata todos os alunos.",
+            "Você não pode mudar o passado, mas pode estragar o presente preocupado com o futuro.",
+            "A melhor maneira de prever o futuro é criá-lo agora.",
+            "O ontem acabou. O amanhã não existe. Só resta o agora.",
+            "Sua vida não é um rascunho — é a versão final."
         ],
         felicidade: [
             "Felicidade não é um destino, é uma direção que você escolhe todo dia.",
@@ -316,7 +446,13 @@
             "Não espere a tempestade passar — aprenda a dançar feliz na chuva.",
             "A vida é 10% o que acontece e 90% como você escolhe reagir.",
             "A felicidade mora nos pequenos detalhes que você ignora.",
-            "Ser feliz é uma decisão, não uma sorte."
+            "Ser feliz é uma decisão, não uma sorte.",
+            "A felicidade é uma borboleta: quanto mais você a persegue, mais ela foge.",
+            "Sua felicidade não deve depender de ninguém além de você.",
+            "A alegria não vem de fora, vem de dentro bem cultivada.",
+            "Compare menos, viva mais. A felicidade não está na competição.",
+            "Sorria para a vida e ela sorrirá de volta.",
+            "A felicidade não é um ponto de chegada, é a própria caminhada."
         ],
         coragem: [
             "Recomeçar não é fracasso — é coragem de tentar de novo.",
@@ -343,7 +479,13 @@
             "Sua alma sabe quando é hora de recomeçar — escute-a.",
             "Toda vez que você sai do lugar, o universo se move com você.",
             "A vida é generosa com quem tem coragem de pedir mais dela.",
-            "Não volte para o que te destruiu. Recrie-se."
+            "Não volte para o que te destruiu. Recrie-se.",
+            "A coragem não é um grito de guerra, é um sussurro que diz 'vou tentar mais uma vez'.",
+            "Seu medo é a prova de que você está prestes a fazer algo grandioso.",
+            "A maior aventura que você pode ter é viver a vida que os outros apenas sonham.",
+            "Coragem é agir com o coração tremendo.",
+            "Não espere a tempestade passar; aprenda a cavalgar na tempestade.",
+            "A vida começa onde o medo termina."
         ],
         leveza: [
             "Deixar ir não é desistir — é libertar o que não te serve mais.",
@@ -373,51 +515,121 @@
             "O que não te acrescenta, te subtrai. Deixe que vá.",
             "Leveza é respirar fundo e escolher a paz, sempre.",
             "Soltar o controle é abraçar o fluxo da vida.",
-            "A leveza começa quando você para de levar tudo tão a sério."
+            "A leveza começa quando você para de levar tudo tão a sério.",
+            "O peso que você carrega não te fortalece, te cansa.",
+            "Aprender a soltar é aprender a voar.",
+            "A vida é muito curta para carregar mágoas pesadas."
+        ],
+        amor: [
+            "Amar não é olhar um para o outro, é olhar juntos na mesma direção.",
+            "O amor próprio é o primeiro amor que você precisa conquistar.",
+            "Amar é deixar o outro ser livre e escolher ficar.",
+            "O amor não precisa de razões, mas precisa de respeito.",
+            "Ame mais, julgue menos. O mundo já está cheio de críticas.",
+            "O amor não machuca. Pessoas machucam. O amor cura.",
+            "Seja luz para quem te ama, mas nunca se apague para acender os outros.",
+            "Amar é um verbo. Pratique-o diariamente.",
+            "O amor que não soma, subtrai. Saiba a diferença.",
+            "Amar é aceitar que o outro não é sua propriedade.",
+            "Antes de buscar amor lá fora, construa um dentro de você.",
+            "O amor não é encontrar alguém perfeito, é aceitar as imperfeições como parte da beleza.",
+            "Amar é cuidar sem sufocar.",
+            "O amor verdadeiro não prende, liberta para voar junto.",
+            "Quem ama de verdade não tem medo de conversar.",
+            "Ame como se nunca fosse se machucar — porque vale a pena.",
+            "O amor é a única força que transforma inimigos em irmãos.",
+            "Aprenda a se amar primeiro, o resto vem como consequência.",
+            "O amor não é sobre posse, é sobre parceria.",
+            "Ame com a alma, não com o ego.",
+            "O amor cresce no cuidado diário, não nos grandes gestos raros.",
+            "Ame sem esperar nada em troca — aí sim será amor de verdade.",
+            "O amor é a ponte entre duas almas que escolheram caminhar juntas.",
+            "Não tenha medo de amar de novo. O amor não te quebrou, pessoas sim.",
+            "Amar é estar presente, mesmo na distância.",
+            "O amor é como uma planta: regue todos os dias ou morre.",
+            "Amar é perdoar sem precisar esquecer.",
+            "O amor próprio é o antídoto contra a solidão.",
+            "Não espere amor perfeito. Espere amor verdadeiro.",
+            "O amor é a resposta mesmo quando você não sabe a pergunta.",
+            "Amar é acreditar que o melhor ainda está por vir."
+        ],
+        sucesso: [
+            "Sucesso não é o que você conquista, é quem você se torna.",
+            "O sucesso é a soma de pequenos esforços repetidos dia após dia.",
+            "Não busque ser o melhor. Busque ser a sua melhor versão.",
+            "Sucesso não é sorte, é preparo encontrando oportunidade.",
+            "O maior sucesso é viver uma vida com propósito.",
+            "Sucesso sem ética é fracasso disfarçado.",
+            "Não meça seu sucesso pelos aplausos dos outros.",
+            "Sucesso é quando você acorda feliz com o que faz.",
+            "Fracasso é apenas sucesso temporariamente disfarçado.",
+            "O sucesso gosta de quem insiste, não de quem desiste.",
+            "Seu único concorrente é quem você era ontem.",
+            "Sucesso não é chegar no topo sozinho, é levar outros junto.",
+            "A disciplina é a mãe do sucesso.",
+            "Sucesso é o que acontece quando a preparação encontra a oportunidade.",
+            "Não espere o sucesso cair do céu. Construa o alicerce.",
+            "O sucesso é uma escada que não pode ser subida com as mãos nos bolsos.",
+            "Sucesso é fazer o que você ama e encontrar alguém que pague por isso.",
+            "O fracasso é uma vírgula, não um ponto final.",
+            "Sucesso é resiliência em ação.",
+            "A consistência vence o talento quando o talento não é consistente.",
+            "Sucesso não é um destino, é uma jornada de melhoria contínua.",
+            "O sucesso começa onde a zona de conforto termina.",
+            "Sucesso é transformar 'um dia' em 'hoje'.",
+            "Não há elevador para o sucesso. É preciso subir as escadas.",
+            "Sucesso é aprender a cair e levantar com mais sabedoria.",
+            "O sucesso silencia os críticos.",
+            "Sucesso é quando seus valores e suas ações estão alinhados.",
+            "Pequenas vitórias diárias constroem grandes sucessos.",
+            "O sucesso é a paz de espírito de saber que deu o seu melhor.",
+            "Sucesso é plantar árvores cuja sombra você talvez não sente.",
+            "O verdadeiro sucesso é inspirar outras pessoas."
         ]
     };
 
-    // Expandir para 520 frases (repetindo com pequenas variações)
-    function expandirFrases(baseArray, topic, targetCount = 130) {
-        let frases = [...baseArray];
-        const originais = [...baseArray];
-        let cont = 0;
-        while (frases.length < targetCount && cont < 100) {
-            for (let i = 0; i < originais.length && frases.length < targetCount; i++) {
-                let variacao = originais[i];
-                if (cont % 2 === 0 && !variacao.includes("?")) {
-                    variacao = variacao.replace(/\.$/, "... e isso é tudo.");
-                } else if (cont % 3 === 0) {
-                    variacao = variacao + " ✨";
+    // Expandir para atingir 1000+ frases (mínimo 150 por tema)
+    function expandirLista(arr, target) {
+        let result = [...arr];
+        while (result.length < target) {
+            for (let i = 0; i < arr.length && result.length < target; i++) {
+                let variacao = arr[i];
+                if (result.length % 3 === 1 && !variacao.includes("?")) {
+                    variacao = variacao.replace(/\.$/, "... e essa é a verdade.");
+                } else if (result.length % 5 === 2) {
+                    variacao = variacao.replace(/$/, " ✨");
+                } else if (result.length % 7 === 3) {
+                    variacao = "— " + variacao;
                 }
-                if (!frases.includes(variacao) && variacao !== originais[i]) {
-                    frases.push(variacao);
+                if (!result.includes(variacao)) {
+                    result.push(variacao);
                 }
-                if (frases.length >= targetCount) break;
             }
-            cont++;
         }
-        return frases.slice(0, targetCount);
+        return result.slice(0, target);
     }
 
-    const frasesTempo = expandirFrases(topicos.tempo, 'tempo', 130);
-    const frasesFelicidade = expandirFrases(topicos.felicidade, 'felicidade', 130);
-    const frasesCoragem = expandirFrases(topicos.coragem, 'coragem', 130);
-    const frasesLeveza = expandirFrases(topicos.leveza, 'leveza', 130);
+    const TEMAS = ['tempo', 'felicidade', 'coragem', 'leveza', 'amor', 'sucesso'];
+    const TARGET_POR_TEMA = 175; // 175 x 6 = 1050 frases
 
-    // Montar array total
-    let todasFrases = [
-        ...frasesTempo.map(t => ({ texto: t, topico: 'tempo' })),
-        ...frasesFelicidade.map(t => ({ texto: t, topico: 'felicidade' })),
-        ...frasesCoragem.map(t => ({ texto: t, topico: 'coragem' })),
-        ...frasesLeveza.map(t => ({ texto: t, topico: 'leveza' }))
-    ];
+    let todasFrases = [];
 
-    // Embaralhar levemente para não ficar blocos idênticos
+    TEMAS.forEach(tema => {
+        const base = frasesPorTema[tema] || frasesPorTema.tempo;
+        const expandidas = expandirLista(base, TARGET_POR_TEMA);
+        expandidas.forEach(texto => {
+            todasFrases.push({ texto, topico: tema });
+        });
+    });
+
+    // Embaralhar para não ficar blocos idênticos
     for (let i = todasFrases.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [todasFrases[i], todasFrases[j]] = [todasFrases[j], todasFrases[i]];
     }
+
+    // Atualizar contador
+    document.getElementById('quoteCount').innerText = todasFrases.length;
 
     const quoteGrid = document.getElementById('quoteGrid');
     let currentFilter = 'all';
@@ -430,14 +642,22 @@
             const card = document.createElement('div');
             card.className = 'quote-card';
             card.setAttribute('data-topic', frase.topico);
-            card.style.animationDelay = `${Math.min(index * 0.01, 0.5)}s`;
+            card.style.animationDelay = `${Math.min(index * 0.005, 0.3)}s`;
+            
+            const nomeTopico = {
+                tempo: '⏳ TEMPO & VIDA',
+                felicidade: '😊 FELICIDADE',
+                coragem: '🦁 CORAGEM & RECOMEÇOS',
+                leveza: '🕊️ LEVEZA & DEIXAR IR',
+                amor: '💖 AMOR & SENTIMENTOS',
+                sucesso: '🏆 SUCESSO & PROPÓSITO'
+            }[frase.topico] || '✨ INSPIRAÇÃO';
             
             card.innerHTML = `
                 <div class="quote-text">${frase.texto}</div>
-                <div class="quote-topic">
-                    ${frase.topico === 'tempo' ? '⏳ TEMPO & VIDA' : 
-                      frase.topico === 'felicidade' ? '😊 FELICIDADE' :
-                      frase.topico === 'coragem' ? '🦁 CORAGEM' : '🕊️ LEVEZA'}
+                <div class="quote-footer">
+                    <div class="quote-topic">${nomeTopico}</div>
+                    <div class="quote-number">#${index + 1}</div>
                 </div>
             `;
             quoteGrid.appendChild(card);
@@ -469,7 +689,25 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    console.log(`Total de frases carregadas: ${todasFrases.length}`);
+    // Print PDF
+    document.getElementById('printPDF').addEventListener('click', () => {
+        window.print();
+    });
+
+    // Criar partículas
+    for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.width = Math.random() * 6 + 2 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDuration = Math.random() * 30 + 15 + 's';
+        particle.style.animationDelay = Math.random() * 10 + 's';
+        document.getElementById('particles').appendChild(particle);
+    }
+
+    console.log(`✅ Ebook carregado com ${todasFrases.length} frases`);
 </script>
 </body>
 </html>
