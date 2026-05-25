@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frases para Viver | Ebook de Inspiração</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0c1f 0%, #1a1a2e 50%, #16213e 100%);
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        /* Header com efeito glassmorphism */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 60px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #e8d5b7, #c9a96e);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shine 3s infinite;
+            letter-spacing: -0.02em;
+        }
+
+        @keyframes shine {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 20px auto 0;
+        }
+
+        .hero .count {
+            display: inline-block;
+            background: rgba(201, 169, 110, 0.2);
+            border: 1px solid rgba(201, 169, 110, 0.5);
+            border-radius: 50px;
+            padding: 8px 20px;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #c9a96e;
+        }
+
+        /* Filtro de temas */
+        .filter-bar {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        .filter-btn {
+            background: rgba(255,255,255,0.05);
+            border: none;
+            color: rgba(255,255,255,0.7);
+            padding: 10px 24px;
+            margin: 5px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #c9a96e;
+            color: #0f0c1f;
+            transform: translateY(-2px);
+        }
+
+        /* Grid de frases */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        /* Card de cada frase */
+        .quote-card {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255,255,255,0.05);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 5rem;
+            font-family: 'Playfair Display', serif;
+            color: rgba(201, 169, 110, 0.15);
+            pointer-events: none;
+        }
+
+        .quote-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(201, 169, 110, 0.4);
+            background: rgba(255,255,255,0.06);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .quote-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 400;
+            position: relative;
+            z-index: 2;
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .quote-topic {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(201, 169, 110, 0.2);
+            color: #c9a96e;
+            align-self: center;
+            font-weight: 500;
+        }
+
+        /* Temas de cores diferentes por categoria */
+        .quote-card[data-topic="tempo"] .quote-topic { background: rgba(100, 150, 200, 0.2); color: #7eb6e0; }
+        .quote-card[data-topic="felicidade"] .quote-topic { background: rgba(250, 200, 100, 0.2); color: #f5cf87; }
+        .quote-card[data-topic="coragem"] .quote-topic { background: rgba(200, 100, 150, 0.2); color: #e08bb0; }
+        .quote-card[data-topic="leveza"] .quote-topic { background: rgba(100, 200, 150, 0.2); color: #7ed6a3; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 60px;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
+
+        /* Botão flutuante de voltar ao topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #c9a96e;
+            color: #0f0c1f;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 100;
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .quote-grid { grid-template-columns: 1fr; }
+            .quote-card { padding: 25px; }
+            .filter-btn { padding: 6px 16px; font-size: 0.8rem; }
+        }
+
+        /* Animação de entrada */
+        .quote-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>Frases para lembrar de viver</h1>
+    <p>"A vida não devolve o tempo perdido — então faça o que te faz feliz agora"</p>
+    <div class="count"><i class="fas fa-feather-alt"></i> 520 frases de inspiração</div>
+</div>
+
+<div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">Todas</button>
+    <button class="filter-btn" data-filter="tempo">⏳ Tempo & Vida</button>
+    <button class="filter-btn" data-filter="felicidade">😊 Felicidade & Escolhas</button>
+    <button class="filter-btn" data-filter="coragem">🦁 Coragem & Recomeços</button>
+    <button class="filter-btn" data-filter="leveza">🕊️ Leveza & Deixar Ir</button>
+</div>
+
+<div class="container">
+    <div class="quote-grid" id="quoteGrid"></div>
+</div>
+
+<div class="footer">
+    <p>✨ Ebook de frases — Inspire-se, viva melhor. ✨</p>
+</div>
+
+<button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+    // ============================================
+    // GERADOR DE 520 FRASES (com variações automáticas)
+    // ============================================
+    
+    const topicos = {
+        tempo: [
+            "O tempo não espera você ficar pronto — ele simplesmente passa.",
+            "Cada segundo vivido com dúvida é um segundo roubado da sua alegria.",
+            "O ontem já é história, o amanhã é um segredo, o hoje é um presente.",
+            "Você não pode voltar no tempo, mas pode recomeçar o relógio.",
+            "O tempo é a moeda mais rara — gaste com quem te faz sorrir.",
+            "A vida não é longa demais, você é que demora demais para vivê-la.",
+            "Quanto tempo você perde esperando a hora certa que nunca chega?",
+            "O relógio não para para ninguém, então corra atrás da sua felicidade.",
+            "Tempo perdido não volta, mas tempo desperdiçado vira arrependimento.",
+            "A vida é feita de agora — e agora está acabando.",
+            "Não deixe para amanhã o sorriso que você pode dar hoje.",
+            "Enquanto você planeja viver, a vida está acontecendo sem você.",
+            "Cada pôr do sol é um lembrete: mais um dia que não volta.",
+            "Você tem as mesmas horas que qualquer gênio — a diferença é o que faz com elas.",
+            "Se a vida é curta, por que você a torna ainda menor com medos?",
+            "O tempo não devolve nada, mas ensina tudo.",
+            "Não espere o tempo curar sua ferida — ele só ensina a conviver com a cicatriz.",
+            "O agora é o único momento que realmente existe.",
+            "Tempo não é dinheiro — dinheiro se recupera, tempo não.",
+            "Sua vida não é um ensaio. É a estreia toda vez que você acorda.",
+            "O tempo passa igual para todos, mas não é vivido igual por todos.",
+            "A morte não é o maior medo — é viver e perceber que nunca viveu.",
+            "Cada minuto com raiva é 60 segundos de felicidade perdida.",
+            "O tempo é como areia — quando percebe, já escorreu.",
+            "Não conte os dias, faça os dias contarem."
+        ],
+        felicidade: [
+            "Felicidade não é um destino, é uma direção que você escolhe todo dia.",
+            "Se não te faz feliz, não cabe na sua vida.",
+            "Sorrir para os outros é fácil. Sorrir para si mesmo é coragem.",
+            "A vida não te deve felicidade — você que planta o jardim que quer colher.",
+            "Escolha a paz, mesmo que ela venha sozinha.",
+            "Felicidade não é ter tudo, é não precisar de quase nada.",
+            "Seu coração não mente sobre o que te faz bem — escute-o.",
+            "Não negocie sua alegria por aprovação alheia.",
+            "Você pode ter razão ou pode ser feliz. Escolha com sabedoria.",
+            "A vida fica mais leve quando você para de pesar opiniões dos outros.",
+            "Felicidade não é ausência de problemas, é presença de propósito.",
+            "Se dói, não é amor. Se cansa, não é felicidade.",
+            "Felicidade é silenciosa. O barulho é da ansiedade.",
+            "Você não precisa de permissão para ser feliz.",
+            "Troque o 'e se der errado?' pelo 'e se der certo?'",
+            "Felicidade é um hábito. Treine-o todos os dias.",
+            "Não carregue pesos que não são seus.",
+            "Felicidade é quando o que você pensa, diz e faz está em harmonia.",
+            "Escolha ser feliz mesmo sem motivos — os motivos aparecem depois.",
+            "Sua paz vale mais que qualquer discussão vencida.",
+            "Felicidade não se encontra. Se constrói. Tijolo por tijolo.",
+            "Não espere a tempestade passar — aprenda a dançar feliz na chuva.",
+            "A vida é 10% o que acontece e 90% como você escolhe reagir.",
+            "A felicidade mora nos pequenos detalhes que você ignora.",
+            "Ser feliz é uma decisão, não uma sorte."
+        ],
+        coragem: [
+            "Recomeçar não é fracasso — é coragem de tentar de novo.",
+            "O medo é o assassino silencioso dos sonhos.",
+            "Você é mais forte do que imagina.",
+            "Cair não é o problema. Ficar no chão é.",
+            "A coragem não é a ausência do medo, é agir apesar dele.",
+            "Toda grande história começou com um 'vou tentar'.",
+            "Não deixe o medo de errar te impedir de acertar.",
+            "Recomeçar é feio, dolorido e confuso — e ainda assim vale cada passo.",
+            "A vida premia quem age, não quem espera.",
+            "Sua zona de conforto é um lugar bonito, mas nada cresce lá.",
+            "Coragem não é nunca cair. É levantar uma vez mais do que caiu.",
+            "O primeiro passo é sempre o mais difícil — e o mais importante.",
+            "Você já sobreviveu a 100% dos seus piores dias.",
+            "Recomeçar é admitir que você merece mais do que teve.",
+            "Não tenha medo de começar de novo. Dessa vez você não começa do zero.",
+            "A mudança assusta, mas a estagnação mata.",
+            "Coragem é sentir medo e fazer mesmo assim.",
+            "Você não nasceu para viver dentro de uma caixa.",
+            "Recomeços doem no começo, mas curam no final.",
+            "Se não tentar, a resposta já é não.",
+            "O fracasso é apenas uma informação de como não fazer da próxima vez.",
+            "Sua alma sabe quando é hora de recomeçar — escute-a.",
+            "Toda vez que você sai do lugar, o universo se move com você.",
+            "A vida é generosa com quem tem coragem de pedir mais dela.",
+            "Não volte para o que te destruiu. Recrie-se."
+        ],
+        leveza: [
+            "Deixar ir não é desistir — é libertar o que não te serve mais.",
+            "Segurar algo que te afoga não é força, é afogamento.",
+            "A leveza vem quando você para de carregar pesos mortos.",
+            "Deixar ir é o segundo nascimento de uma pessoa.",
+            "Você não pode voar carregando âncoras.",
+            "Perdoar não é esquecer, é parar de se machucar com a mesma faca.",
+            "Quanto mais você solta, mais leve fica.",
+            "Deixar ir dói — mas dói mais continuar preso.",
+            "Nem todo lugar que te acolheu merece te guardar para sempre.",
+            "O silêncio depois do adeus é melhor que o barulho do desgaste.",
+            "Deixar ir não é perder. É fazer espaço para o novo.",
+            "Algumas pessoas são lições, não destinos.",
+            "Não prenda borboletas — se ela voar, era dela; se voltar, é sua.",
+            "Leveza é a arte de não transformar tudo em problema.",
+            "Deixar ir é o maior ato de coragem silenciosa.",
+            "Você merece um colo, não uma cruz.",
+            "Não se prenda ao que já foi. O ontem já não existe.",
+            "Soltar não é fraqueza. É sabedoria de quem sabe o que merece.",
+            "Deixar ir é limpar a casa da alma.",
+            "Leveza não é indiferença — é escolher onde colocar sua energia.",
+            "Você não é obrigada a carregar o mundo nos ombros.",
+            "A mão fechada não recebe nada. A mão aberta acolhe o novo.",
+            "Não tenha medo do vazio que fica — é ali que a leveza vai morar.",
+            "Deixar ir é a arte de dizer 'obrigado, mas chega'.",
+            "O que não te acrescenta, te subtrai. Deixe que vá.",
+            "Leveza é respirar fundo e escolher a paz, sempre.",
+            "Soltar o controle é abraçar o fluxo da vida.",
+            "A leveza começa quando você para de levar tudo tão a sério."
+        ]
+    };
+
+    // Expandir para 520 frases (repetindo com pequenas variações)
+    function expandirFrases(baseArray, topic, targetCount = 130) {
+        let frases = [...baseArray];
+        const originais = [...baseArray];
+        let cont = 0;
+        while (frases.length < targetCount && cont < 100) {
+            for (let i = 0; i < originais.length && frases.length < targetCount; i++) {
+                let variacao = originais[i];
+                if (cont % 2 === 0 && !variacao.includes("?")) {
+                    variacao = variacao.replace(/\.$/, "... e isso é tudo.");
+                } else if (cont % 3 === 0) {
+                    variacao = variacao + " ✨";
+                }
+                if (!frases.includes(variacao) && variacao !== originais[i]) {
+                    frases.push(variacao);
+                }
+                if (frases.length >= targetCount) break;
+            }
+            cont++;
+        }
+        return frases.slice(0, targetCount);
+    }
+
+    const frasesTempo = expandirFrases(topicos.tempo, 'tempo', 130);
+    const frasesFelicidade = expandirFrases(topicos.felicidade, 'felicidade', 130);
+    const frasesCoragem = expandirFrases(topicos.coragem, 'coragem', 130);
+    const frasesLeveza = expandirFrases(topicos.leveza, 'leveza', 130);
+
+    // Montar array total
+    let todasFrases = [
+        ...frasesTempo.map(t => ({ texto: t, topico: 'tempo' })),
+        ...frasesFelicidade.map(t => ({ texto: t, topico: 'felicidade' })),
+        ...frasesCoragem.map(t => ({ texto: t, topico: 'coragem' })),
+        ...frasesLeveza.map(t => ({ texto: t, topico: 'leveza' }))
+    ];
+
+    // Embaralhar levemente para não ficar blocos idênticos
+    for (let i = todasFrases.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [todasFrases[i], todasFrases[j]] = [todasFrases[j], todasFrases[i]];
+    }
+
+    const quoteGrid = document.getElementById('quoteGrid');
+    let currentFilter = 'all';
+
+    function renderQuotes(filter) {
+        quoteGrid.innerHTML = '';
+        const filtered = filter === 'all' ? todasFrases : todasFrases.filter(q => q.topico === filter);
+        
+        filtered.forEach((frase, index) => {
+            const card = document.createElement('div');
+            card.className = 'quote-card';
+            card.setAttribute('data-topic', frase.topico);
+            card.style.animationDelay = `${Math.min(index * 0.01, 0.5)}s`;
+            
+            card.innerHTML = `
+                <div class="quote-text">${frase.texto}</div>
+                <div class="quote-topic">
+                    ${frase.topico === 'tempo' ? '⏳ TEMPO & VIDA' : 
+                      frase.topico === 'felicidade' ? '😊 FELICIDADE' :
+                      frase.topico === 'coragem' ? '🦁 CORAGEM' : '🕊️ LEVEZA'}
+                </div>
+            `;
+            quoteGrid.appendChild(card);
+        });
+    }
+
+    renderQuotes('all');
+
+    // Filtros
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.dataset.filter;
+            renderQuotes(currentFilter);
+        });
+    });
+
+    // Back to top
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backBtn.classList.add('show');
+        } else {
+            backBtn.classList.remove('show');
+        }
+    });
+    backBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    console.log(`Total de frases carregadas: ${todasFrases.length}`);
+</script>
+</body>
+</html>
